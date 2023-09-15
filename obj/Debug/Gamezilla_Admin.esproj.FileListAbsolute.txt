@@ -1,0 +1,2 @@
+D:\Documents\repos\Gamezilla_Admin\obj\Debug\Gamezilla_Admin.esproj.SuggestedBindingRedirects.cache
+D:\Documents\repos\Gamezilla_Admin\obj\Debug\Gamezilla_Admin.esproj.CoreCompileInputs.cache

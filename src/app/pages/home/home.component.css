@@ -1,0 +1,21 @@
+.google-home {
+  text-align: center;
+  padding: 100px 0;
+  background-color:red;
+}
+
+.google-logo {
+  /* Ajoutez les styles pour le logo ici */
+}
+
+.search-field {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.buttons-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}

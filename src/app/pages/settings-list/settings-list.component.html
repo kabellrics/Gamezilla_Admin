@@ -1,0 +1,27 @@
+<mat-card>
+  <mat-card-title>Liste de Paramètre</mat-card-title>
+  <mat-card-content><mat-card-content>
+                      <table mat-table [dataSource]="keyValuePairs">
+                        <!-- Colonne Id -->
+                        <ng-container matColumnDef="id">
+                          <th mat-header-cell *matHeaderCellDef>Id</th>
+                          <td mat-cell *matCellDef="let element">{{ element.Id }}</td>
+                        </ng-container>
+                        <!-- Colonne Clé -->
+                        <ng-container matColumnDef="key">
+                          <th mat-header-cell *matHeaderCellDef>Clé</th>
+                          <td mat-cell *matCellDef="let element">{{ element.Key }}</td>
+                        </ng-container>
+
+                        <!-- Colonne Valeur -->
+                        <ng-container matColumnDef="value">
+                          <th mat-header-cell *matHeaderCellDef>Valeur</th>
+                          <td mat-cell *matCellDef="let element">{{ element.Valeur }}</td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      </table>
+</mat-card-content>
+  </mat-card-content>
+</mat-card>
