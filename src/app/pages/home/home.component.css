@@ -8,6 +8,23 @@
   /* Ajoutez les styles pour le logo ici */
 }
 
+
+.text_title {
+  height: 100px;
+  font-size: 100px;
+  font-weight: bold;
+  color: black;
+  text-shadow: -2px 0 0 red, /* Liseré rouge à gauche */
+  2px 0 0 white, /* Liseré blanc à droite */
+  0 0 3px black; /* Ombre noire autour du texte */
+  background: -webkit-linear-gradient(transparent, transparent), -webkit-linear-gradient(transparent, transparent), -webkit-linear-gradient(to right, red, red), -webkit-linear-gradient(to right, white, white), -webkit-linear-gradient(to right, black, black);
+  background: linear-gradient(transparent, transparent), linear-gradient(transparent, transparent), linear-gradient(to right, red, red), linear-gradient(to right, white, white), linear-gradient(to right, black, black);
+  background-clip: text, text, border-box, border-box, padding-box;
+  -webkit-background-clip: text, text, border-box, border-box, padding-box;
+  /*color: transparent;*/
+  padding: 5px;
+}
+
 .search-field {
   width: 400px;
   margin: 0 auto;
