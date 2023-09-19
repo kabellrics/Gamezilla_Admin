@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppComponent } from './app.component';
@@ -10,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatSelectModule } from '@angular/material/select';
 import { SettingsListComponent } from './pages/settings-list/settings-list.component';
 import { PlateformeListComponent } from './pages/plateforme-list/plateforme-list.component';
 import { ExecutableListComponent } from './pages/executable-list/executable-list.component';
@@ -17,6 +20,10 @@ import { NonexecutableListComponent } from './pages/nonexecutable-list/nonexecut
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule } from "@angular/router";
 import { ROUTES } from './routes';
+import { ParameterService } from './services/parameterService';
+import { HttpClientModule } from '@angular/common/http';
+import { ImgPipe } from './shared/pipeImg';
+import { PlateformeDetailComponent } from './pages/plateforme-detail/plateforme-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,16 +33,20 @@ import { ROUTES } from './routes';
     PlateformeListComponent,
     ExecutableListComponent,
     NonexecutableListComponent,
-    HomeComponent
+    HomeComponent, ImgPipe, PlateformeDetailComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule, MatToolbarModule, MatButtonModule, MatCardModule, MatTableModule, MatFormFieldModule, MatInputModule
+    MatIconModule, MatGridListModule, MatToolbarModule,
+    MatButtonModule, MatCardModule, MatTableModule,
+    MatFormFieldModule, MatInputModule, MatSelectModule
   ],
-  providers: [],
+  providers: [ParameterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

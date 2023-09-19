@@ -1,1 +1,19 @@
-<p>plateforme-list works!</p>
+<mat-card>
+  <mat-card-title>Liste de Plateforme</mat-card-title>
+  <mat-card-content>
+    <mat-card-content>
+      <mat-grid-list cols="3" gutterSize="16px">
+        <!--cols="1" [cols.sm]="2" [cols.md]="3" [cols.lg]="4" [cols.xl]="5"-->
+        <mat-grid-tile *ngFor="let item of plateformes">
+          <a [routerLink]="'/plateformedetail/'+item.Id">
+            <mat-card class="card">
+              <img mat-card-image [src]="item.Fanart | imglink" alt="Item Image" class="stretch-fill-image" />
+              <mat-card-content class="center-content">
+                <p>{{ item.Name }}</p>
+              </mat-card-content>
+            </mat-card></a>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card-content>
+</mat-card>

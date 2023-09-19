@@ -1,0 +1,28 @@
+<mat-card style="margin-top:15px">
+  <!-- Nom de l'Item -->
+  <mat-card-title class="card-title">{{ plateforme.Name }}</mat-card-title>
+
+  <!-- Image au format 16/9 -->
+  <div class="image-container">
+    <img [src]="plateforme.Fanart | imglink" alt="Item Image" class="item-image" />
+    <button mat-raised-button color="primary" (click)="changeImage()">
+      Modifier l'image
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+  <!-- Champ 'Order' pour le numéro -->
+  <mat-form-field class="order-field">
+    <mat-label>Numéro d'ordre</mat-label>
+    <input matInput type="number" placeholder="Numéro d'ordre" [(ngModel)]="plateforme.ShowOrder" />
+  </mat-form-field>
+
+  <!-- Champ de sélection (combobox) pour le type de l'Item -->
+  <mat-form-field class="type-field">
+    <mat-label>Type de plateforme</mat-label>
+    <mat-select [(ngModel)]="plateforme.PlateformeTypeId">
+      <mat-option value="1">Store</mat-option>
+      <mat-option value="2">Emulation</mat-option>
+      <mat-option value="3">Autres</mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-card>

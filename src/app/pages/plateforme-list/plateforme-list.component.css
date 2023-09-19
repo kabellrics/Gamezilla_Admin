@@ -1,0 +1,13 @@
+.stretch-fill-image {
+  width: 100%; /* La largeur de l'image occupera 100% de la largeur du conteneur */
+  height: 100%; /* La hauteur de l'image occupera 100% de la hauteur du conteneur */
+  object-fit: cover; /* Ajustement de l'image pour remplir le conteneur en conservant son rapport d'aspect */
+}
+.card {
+  display: flex; /* Utilisez un affichage flex pour centrer le contenu */
+  align-items: center; /* Centrez le contenu verticalement */
+  justify-content: center; /* Centrez le contenu horizontalement */
+}
+.center-content {
+  text-align: center; /* Centrez le texte horizontalement (si nécessaire) */
+}
