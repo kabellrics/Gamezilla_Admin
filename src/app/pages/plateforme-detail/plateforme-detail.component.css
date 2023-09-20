@@ -33,11 +33,22 @@ mat-card-title {
   font-weight: bold; /* Gras */
   margin-bottom: 10px; /* Marge inférieure */
 }
-
+.logo-back{
+    background-color:lightgrey;
+}
 /* Style pour l'image de la Plateforme */
 .item-image {
   width: 100%; /* Largeur de l'image à 100% de son conteneur */
   height: auto; /* Hauteur automatique pour conserver le rapport d'aspect */
+  /*max-height: 200px;*/ /* Hauteur maximale de l'image (ajustez selon vos besoins) */
+  object-fit: cover; /* Ajustement de l'image pour remplir le conteneur */
+  margin-bottom: 10px; /* Marge inférieure */
+}
+/* Style pour l'image de la Plateforme */
+.item-logo {
+  width: auto; /* Largeur de l'image à 100% de son conteneur */
+  height: auto; /* Hauteur automatique pour conserver le rapport d'aspect */
+  max-height: 250px;
   /*max-height: 200px;*/ /* Hauteur maximale de l'image (ajustez selon vos besoins) */
   object-fit: cover; /* Ajustement de l'image pour remplir le conteneur */
   margin-bottom: 10px; /* Marge inférieure */

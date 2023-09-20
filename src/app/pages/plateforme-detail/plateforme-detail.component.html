@@ -2,6 +2,14 @@
   <!-- Nom de l'Item -->
   <mat-card-title class="card-title">{{ plateforme.Name }}</mat-card-title>
 
+
+  <div class="image-container logo-back">
+    <img [src]="plateforme.Logo | imglink" alt="Item Image" class="item-logo" />
+    <button mat-raised-button color="primary" (click)="changeImage()">
+      Modifier l'image
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
   <!-- Image au format 16/9 -->
   <div class="image-container">
     <img [src]="plateforme.Fanart | imglink" alt="Item Image" class="item-image" />

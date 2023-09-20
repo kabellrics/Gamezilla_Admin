@@ -19,6 +19,16 @@ export class PlateformeService {
       })
     );
   }
+
+  getPlateformeByFirstLetter(letter: string): Observable<Plateforme[]> {
+    var urlpath = this.apibaseUrl + 'readbyletter.php?Id=' + letter;
+    return this.http.get<PlateformesResult>(urlpath).pipe(
+      map((plateformes: PlateformesResult) => {
+        return this.convertKeyParameter(plateformes);
+      })
+    );
+  }
+
   getPlateformeByIdData(id: number): Observable<Plateforme> {
     var urlpath = this.apibaseUrl + 'single_read.php?Id=' + id;
     return this.http.get<Plateforme>(urlpath);
@@ -40,6 +50,7 @@ export class PlateformeService {
     return plateformes.body.map(plate => ({
       Id: plate.Id,
       Fanart: plate.Fanart,
+      Logo: plate.Logo,
       Name: plate.Name,
       ShowOrder: plate.ShowOrder,
       PlateformeTypeId: plate.PlateformeTypeId

@@ -11,3 +11,15 @@
 .center-content {
   text-align: center; /* Centrez le texte horizontalement (si nécessaire) */
 }
+.alphabetical-pager {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Espacement entre les boutons */
+  margin:auto;
+}
+
+button {
+  text-transform: uppercase; /* Convertir le texte en majuscules */
+  font-weight: bold;
+  font-size: 16px;
+}
