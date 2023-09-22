@@ -26,7 +26,12 @@ mat-card {
   text-align: center; /* Centrer le contenu */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
-
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
 /* Style pour le titre de la Plateforme */
 mat-card-title {
   font-size: 24px; /* Taille de la police du titre */

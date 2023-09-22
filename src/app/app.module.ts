@@ -13,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SettingsListComponent } from './pages/settings-list/settings-list.component';
 import { PlateformeListComponent } from './pages/plateforme-list/plateforme-list.component';
 import { ExecutableListComponent } from './pages/executable-list/executable-list.component';
@@ -44,7 +45,8 @@ import { PlateformeDetailComponent } from './pages/plateforme-detail/plateforme-
     MatToolbarModule,
     MatIconModule, MatGridListModule, MatToolbarModule,
     MatButtonModule, MatCardModule, MatTableModule,
-    MatFormFieldModule, MatInputModule, MatSelectModule
+    MatFormFieldModule, MatInputModule, MatSelectModule,
+    MatCheckboxModule
   ],
   providers: [ParameterService],
   bootstrap: [AppComponent]

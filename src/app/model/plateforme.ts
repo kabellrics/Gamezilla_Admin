@@ -10,4 +10,5 @@ export interface Plateforme {
   Logo: string
   ShowOrder: string
   PlateformeTypeId: string
+  IsActif: boolean
 }

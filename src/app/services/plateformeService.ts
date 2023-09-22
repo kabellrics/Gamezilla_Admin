@@ -53,7 +53,8 @@ export class PlateformeService {
       Logo: plate.Logo,
       Name: plate.Name,
       ShowOrder: plate.ShowOrder,
-      PlateformeTypeId: plate.PlateformeTypeId
+      PlateformeTypeId: plate.PlateformeTypeId,
+      IsActif: plate.IsActif
     }));
   }
 }

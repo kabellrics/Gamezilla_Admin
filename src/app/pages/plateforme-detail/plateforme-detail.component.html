@@ -24,6 +24,11 @@
     <input matInput type="number" placeholder="Numéro d'ordre" [(ngModel)]="plateforme.ShowOrder" />
   </mat-form-field>
 
+  <!-- Champ 'IsActif' pour le numéro -->
+  <section class="example-section">
+    <mat-checkbox class="example-margin" [(ngModel)]="plateforme.IsActif">Actif</mat-checkbox>
+  </section>
+
   <!-- Champ de sélection (combobox) pour le type de l'Item -->
   <mat-form-field class="type-field">
     <mat-label>Type de plateforme</mat-label>

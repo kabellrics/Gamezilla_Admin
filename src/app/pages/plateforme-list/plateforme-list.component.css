@@ -12,14 +12,22 @@
   text-align: center; /* Centrez le texte horizontalement (si nécessaire) */
 }
 .alphabetical-pager {
-  display: flex;
+  display: flex; /* Utilisez flexbox pour aligner les éléments au milieu */
+  justify-content: center; /* Centre horizontalement les éléments */
+  align-items: center;
   flex-wrap: wrap;
   gap: 8px; /* Espacement entre les boutons */
-  margin:auto;
+  margin: auto;
 }
 
 button {
   text-transform: uppercase; /* Convertir le texte en majuscules */
   font-weight: bold;
-  font-size: 16px;
+  font-size: 32px;
+}
+.page-title {
+    padding:20px;
+  text-transform: uppercase; /* Convertir le texte en majuscules */
+  font-weight: bold;
+  font-size: 64px;
 }
