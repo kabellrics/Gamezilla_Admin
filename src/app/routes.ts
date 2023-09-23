@@ -5,6 +5,7 @@ import { NonexecutableListComponent } from "./pages/nonexecutable-list/nonexecut
 import { PlateformeListComponent } from "./pages/plateforme-list/plateforme-list.component";
 import { SettingsListComponent } from "./pages/settings-list/settings-list.component";
 import { PlateformeDetailComponent } from "./pages/plateforme-detail/plateforme-detail.component";
+import { PlateformeListReorderComponent } from "./pages/plateforme-list-reorder/plateforme-list-reorder.component";
 
 export const ROUTES: Routes = [
   //{ path: '**', redirectTo: 'home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ export const ROUTES: Routes = [
   { path: 'execlist', component: ExecutableListComponent },
   { path: 'nonexeclist', component: NonexecutableListComponent },
   { path: 'plateformelist', component: PlateformeListComponent },
+  { path: 'plateformelistreorder', component: PlateformeListReorderComponent },
   { path: 'plateformedetail/:id', component: PlateformeDetailComponent },
   { path: 'settings', component: SettingsListComponent },
 ];

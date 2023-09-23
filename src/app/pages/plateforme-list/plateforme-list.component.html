@@ -3,11 +3,14 @@
   <mat-card-title class="page-title">Liste de Plateforme</mat-card-title>
   <mat-card-content>
     <mat-card-content>
+      <a mat-button class="primary example-icon" routerLink="/plateformelistreorder">
+        <span>Changer l'ordre d'affichage des plateformes</span>
+      </a>
+      <div class="alphabetical-pager">
+        <button mat-button *ngFor="let letter of pager.body" (click)="onLetterClick(letter.Letter)">{{ letter.Letter }}</button>
+      </div>
       <mat-grid-list cols="3" gutterSize="16px">
         <!--cols="1" [cols.sm]="2" [cols.md]="3" [cols.lg]="4" [cols.xl]="5"-->
-        <div class="alphabetical-pager">
-          <button mat-button *ngFor="let letter of pager.body" (click)="onLetterClick(letter.Letter)">{{ letter.Letter }}</button>
-        </div>
         <mat-grid-tile *ngFor="let item of plateformes">
           <a [routerLink]="'/plateformedetail/'+item.Id">
             <mat-card class="card">

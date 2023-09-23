@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSortModule } from '@angular/material/sort';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SettingsListComponent } from './pages/settings-list/settings-list.component';
 import { PlateformeListComponent } from './pages/plateforme-list/plateforme-list.component';
 import { ExecutableListComponent } from './pages/executable-list/executable-list.component';
@@ -25,6 +27,7 @@ import { ParameterService } from './services/parameterService';
 import { HttpClientModule } from '@angular/common/http';
 import { ImgPipe } from './shared/pipeImg';
 import { PlateformeDetailComponent } from './pages/plateforme-detail/plateforme-detail.component';
+import { PlateformeListReorderComponent } from './pages/plateforme-list-reorder/plateforme-list-reorder.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,7 @@ import { PlateformeDetailComponent } from './pages/plateforme-detail/plateforme-
     PlateformeListComponent,
     ExecutableListComponent,
     NonexecutableListComponent,
-    HomeComponent, ImgPipe, PlateformeDetailComponent
+    HomeComponent, ImgPipe, PlateformeDetailComponent, PlateformeListReorderComponent
   ],
   imports: [
     HttpClientModule,
@@ -46,7 +49,7 @@ import { PlateformeDetailComponent } from './pages/plateforme-detail/plateforme-
     MatIconModule, MatGridListModule, MatToolbarModule,
     MatButtonModule, MatCardModule, MatTableModule,
     MatFormFieldModule, MatInputModule, MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule, MatSortModule, DragDropModule
   ],
   providers: [ParameterService],
   bootstrap: [AppComponent]

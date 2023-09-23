@@ -1,0 +1,17 @@
+
+<mat-card>
+  <mat-card-title class="page-title">Réorganiser la liste des Plateformes</mat-card-title>
+  <mat-card-content>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let plateforme of plateformes" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        {{plateforme.ShowOrder}} - {{plateforme.Name}}
+        <img *cdkDragPreview [src]="plateforme.Fanart | imglink" [alt]="plateforme.Name" style="width:400px;height:225px;">
+      </div>
+    </div>
+    <a mat-button class="primary example-icon" routerLink="/plateformelist">
+      <span>Sauvegarder les changements</span>
+    </a>
+  </mat-card-content>
+</mat-card>
+
