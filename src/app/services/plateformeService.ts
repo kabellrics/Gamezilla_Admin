@@ -29,6 +29,12 @@ export class PlateformeService {
     );
   }
 
+  updatePlateforme(plateforme: Plateforme): Observable<any> {
+    var urlpath = this.apibaseUrl + 'update.php';
+    var plateformeJSON: string = JSON.stringify(plateforme);
+    return this.http.post(urlpath, plateformeJSON);
+  }
+
   getPlateformeByIdData(id: number): Observable<Plateforme> {
     var urlpath = this.apibaseUrl + 'single_read.php?Id=' + id;
     return this.http.get<Plateforme>(urlpath);

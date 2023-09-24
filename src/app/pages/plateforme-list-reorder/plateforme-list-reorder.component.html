@@ -9,9 +9,9 @@
         <img *cdkDragPreview [src]="plateforme.Fanart | imglink" [alt]="plateforme.Name" style="width:400px;height:225px;">
       </div>
     </div>
-    <a mat-button class="primary example-icon" routerLink="/plateformelist">
+    <button mat-button color="primary" class="example-icon" (click)="onSubmit()">
       <span>Sauvegarder les changements</span>
-    </a>
+    </button>
   </mat-card-content>
 </mat-card>
 
