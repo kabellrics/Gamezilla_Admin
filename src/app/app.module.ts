@@ -28,6 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ImgPipe } from './shared/pipeImg';
 import { PlateformeDetailComponent } from './pages/plateforme-detail/plateforme-detail.component';
 import { PlateformeListReorderComponent } from './pages/plateforme-list-reorder/plateforme-list-reorder.component';
+import { PlateformePipe } from './shared/plateformePipe';
+import { StringToBool } from './shared/stringTobool';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { PlateformeListReorderComponent } from './pages/plateforme-list-reorder/
     PlateformeListComponent,
     ExecutableListComponent,
     NonexecutableListComponent,
-    HomeComponent, ImgPipe, PlateformeDetailComponent, PlateformeListReorderComponent
+    HomeComponent, ImgPipe, PlateformeDetailComponent, PlateformeListReorderComponent, PlateformePipe, StringToBool
   ],
   imports: [
     HttpClientModule,
