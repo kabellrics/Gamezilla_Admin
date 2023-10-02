@@ -29,7 +29,7 @@ import { ImgPipe } from './shared/pipeImg';
 import { PlateformeDetailComponent } from './pages/plateforme-detail/plateforme-detail.component';
 import { PlateformeListReorderComponent } from './pages/plateforme-list-reorder/plateforme-list-reorder.component';
 import { PlateformePipe } from './shared/plateformePipe';
-import { StringToBool } from './shared/stringTobool';
+import { StringToBoolPipe } from './shared/stringTobool';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import { StringToBool } from './shared/stringTobool';
     PlateformeListComponent,
     ExecutableListComponent,
     NonexecutableListComponent,
-    HomeComponent, ImgPipe, PlateformeDetailComponent, PlateformeListReorderComponent, PlateformePipe, StringToBool
+    HomeComponent, ImgPipe, PlateformeDetailComponent,
+    PlateformeListReorderComponent, PlateformePipe, StringToBoolPipe
   ],
   imports: [
     HttpClientModule,
