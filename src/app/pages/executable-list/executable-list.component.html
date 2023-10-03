@@ -2,6 +2,12 @@
   <mat-card-title class="page-title">Liste des Executables</mat-card-title>
   <mat-card-content>
     <mat-card-content>
+      <!--<mat-form-field>
+        <mat-label>Filtrer par plateforme</mat-label>
+        <mat-select [formControl]="selectedplateforme">
+          <mat-option *ngFor="let type of plateformefilter" [value]="type">{{ type | plateformename | async}}</mat-option>
+        </mat-select>
+      </mat-form-field>-->
       <table mat-table [dataSource]="filteredexecutables" class="mat-elevation-z8">
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
