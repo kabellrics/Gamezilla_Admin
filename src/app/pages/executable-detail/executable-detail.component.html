@@ -1,0 +1,116 @@
+<mat-card style="margin-top:15px; background-color:slategrey">
+  <!-- Nom de l'Item -->
+  <mat-card-title class="card-title">{{ executable.Name }}</mat-card-title>
+  <mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="Id" [(ngModel)]="executable.Id" name="Id" disabled>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Name" [(ngModel)]="executable.Name" name="Name">
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col">
+          <mat-label>Est dans les favoris</mat-label>
+          <mat-checkbox [(ngModel)]="executable.Favorite" name="Favorite">Favorite</mat-checkbox>
+        </div>
+        <div class="col">
+          <mat-label>Est affiché par le Front</mat-label>
+          <mat-checkbox [(ngModel)]="executable.IsActif" name="IsActif">Active</mat-checkbox>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>StoreId</mat-label>
+            <input matInput placeholder="StoreId" [(ngModel)]="executable.StoreId" name="StoreId">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Plateforme</mat-label>
+            <input matInput placeholder="PlateformeId" [(ngModel)]="executable.PlateformeId" name="PlateformeId">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Dernière date de lancement</mat-label>
+            <input matInput placeholder="LastStartDate" [(ngModel)]="executable.LastStartDate" name="Derniers Lancement">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Nombre de lancement</mat-label>
+            <input matInput placeholder="NbStart" [(ngModel)]="executable.NbStart" name="Nombre de Lancement">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Chemin</mat-label>
+            <input matInput placeholder="Path" [(ngModel)]="executable.Path" name="Path">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Parametres</mat-label>
+            <input matInput placeholder="StartParam" [(ngModel)]="executable.StartParam" name="StartParam">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <button mat-button (click)="toggleDropdown()">Chercher sur Steamgriddb</button>
+        <mat-form-field *ngIf="showDropdown">
+          <mat-label>Résultat</mat-label>
+          <mat-select (selectionChange)="onSelectionChange($event)">
+            <mat-option *ngFor="let option of steamgriddbresult" [value]="option.id">{{ option.name }} ({{option.release_date! | timestampToDate}})</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+        <div class="row">
+        <div class="col">
+          <div class="image-preview-cover">
+            <mat-form-field class="example-full-width-image">
+              <mat-label>Cover</mat-label>
+              <input matInput placeholder="Cover" [(ngModel)]="executable.Cover" name="Cover">
+            </mat-form-field>
+            <img *ngIf="executable.Cover" [src]="executable.Cover | imglink" alt="Cover Preview">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="image-preview-logo">
+            <mat-form-field class="example-full-width-image">
+              <mat-label>Logo</mat-label>
+              <input matInput placeholder="Logo" [(ngModel)]="executable.Logo" name="Logo">
+            </mat-form-field>
+            <img *ngIf="executable.Logo" [src]="executable.Logo | imglink" alt="Logo Preview">
+          </div>
+        </div>
+      </div>
+
+      <div class="image-preview-hero">
+        <mat-form-field class="example-full-width-image">
+          <mat-label>Hero</mat-label>
+          <input matInput placeholder="Heroe" [(ngModel)]="executable.Heroe" name="Heroe">
+        </mat-form-field>
+        <div class="image-container">
+          <img *ngIf="executable.Heroe" [src]="executable.Heroe | imglink" alt="Heroe Preview">
+        </div>
+        </div>
+
+        <!-- Add Save button here to submit changes -->
+</form>
+  </mat-card-content>
+</mat-card>

@@ -2,12 +2,12 @@
   <mat-card-title class="page-title">Liste des Executables</mat-card-title>
   <mat-card-content>
     <mat-card-content>
-      <!--<mat-form-field>
+      <mat-form-field>
         <mat-label>Filtrer par plateforme</mat-label>
-        <mat-select [formControl]="selectedplateforme">
+        <mat-select [(ngModel)]="selectedplateforme" (selectionChange)="onPlateformeChange($event)">
           <mat-option *ngFor="let type of plateformefilter" [value]="type">{{ type | plateformename | async}}</mat-option>
         </mat-select>
-      </mat-form-field>-->
+      </mat-form-field>
       <table mat-table [dataSource]="filteredexecutables" class="mat-elevation-z8">
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -40,7 +40,7 @@
 
         <ng-container matColumnDef="link">
           <th mat-header-cell *matHeaderCellDef>Lien</th>
-          <td mat-cell *matCellDef="let item">Edit</td>
+          <td mat-cell *matCellDef="let item"><a [routerLink]="'/executabledetail/'+item.Id">Edit</a></td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

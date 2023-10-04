@@ -1,0 +1,73 @@
+/* Aligner les cases à cocher horizontalement */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-bottom: 16px; /* Espacement entre les groupes de champs */
+}
+
+.col {
+  flex: 1;
+}
+
+/* Ajouter un espacement entre les champs */
+.mat-form-field {
+  margin-right: 16px; /* Espacement horizontal entre les champs */
+  width: 48%; /* Largeur des champs (ajustez selon vos besoins) */
+}
+
+/* Styles pour les images de prévisualisation */
+.image-preview-cover img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 8px; /* Espacement vertical entre l'input et l'image */
+  margin: 0 auto; /* Pour occuper toute la largeur disponible */
+  display: flex;
+  flex-direction: column-reverse; /* Les éléments sont empilés en colonne, l'image en bas */
+  align-items: stretch; /* Les éléments s'étirent pour occuper toute la largeur */
+}
+/* Styles pour les images de prévisualisation */
+.image-preview-logo img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 8px; /* Espacement vertical entre l'input et l'image */
+  margin: 0 auto; /* Pour occuper toute la largeur disponible */
+  display: flex;
+  flex-direction: column-reverse; /* Les éléments sont empilés en colonne, l'image en bas */
+  align-items: stretch; /* Les éléments s'étirent pour occuper toute la largeur */
+}
+/* Styles pour les images de prévisualisation */
+.image-preview-hero img {
+  max-width: 98%;
+  height: 100%;
+  margin-top: 8px; /* Espacement vertical entre l'input et l'image */
+  margin: 0 auto; /* Pour occuper toute la largeur disponible */
+  display: flex;
+  flex-direction: column-reverse; /* Les éléments sont empilés en colonne, l'image en bas */
+  align-items: stretch; /* Les éléments s'étirent pour occuper toute la largeur */
+}
+
+.example-full-width {
+  width: 80%;
+  margin: 0 auto; /* Pour occuper toute la largeur disponible */
+}
+.example-full-width-image {
+  width: 80%;
+  margin: 0 auto; /* Pour occuper toute la largeur disponible */
+  display: flex;
+  align-items: stretch; /* Les éléments s'étirent pour occuper toute la largeur */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center; /* Centre l'image horizontalement */
+  align-items: center; /* Centre l'image verticalement */
+}
+
+/* Styles optionnels pour améliorer l'apparence du formulaire */
+.example-form {
+  display: flex;
+  flex-direction: column;
+  /*max-width: 400px;*/ /* Largeur maximale du formulaire (ajustez selon vos besoins) */
+  margin: 0 auto;
+}

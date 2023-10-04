@@ -38,19 +38,6 @@ export class PlateformeService {
   getPlateformeByIdData(id: number): Observable<Plateforme> {
     var urlpath = this.apibaseUrl + 'single_read.php?Id=' + id;
     return this.http.get<Plateforme>(urlpath);
-    //  .pipe(
-    //  map((data: any) => {
-    //    return {
-    //      Id: data.Id,
-    //      Name: data.Name,
-    //      Fanart: data.Fanart,
-    //      ShowOrder: data.ShowOrder,
-    //      PlateformeTypeId: data.PlateformeTypeId
-    //    } as Plateforme;
-    //  })
-    //).subscribe((plateforme: Plateforme) => {
-    //  return plateforme;
-    //})
   }
   private convertKeyParameter(plateformes: PlateformesResult): Plateforme[] {
     return plateformes.body.map(plate => ({

@@ -30,6 +30,8 @@ import { PlateformeDetailComponent } from './pages/plateforme-detail/plateforme-
 import { PlateformeListReorderComponent } from './pages/plateforme-list-reorder/plateforme-list-reorder.component';
 import { PlateformePipe } from './shared/plateformePipe';
 import { StringToBoolPipe } from './shared/stringTobool';
+import { ExecutableDetailComponent } from './pages/executable-detail/executable-detail.component';
+import { TimestampToDatePipe } from './shared/timepipe';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,7 @@ import { StringToBoolPipe } from './shared/stringTobool';
     ExecutableListComponent,
     NonexecutableListComponent,
     HomeComponent, ImgPipe, PlateformeDetailComponent,
-    PlateformeListReorderComponent, PlateformePipe, StringToBoolPipe
+    PlateformeListReorderComponent, PlateformePipe, StringToBoolPipe, ExecutableDetailComponent, TimestampToDatePipe
   ],
   imports: [
     HttpClientModule,

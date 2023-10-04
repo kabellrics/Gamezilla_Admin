@@ -12,7 +12,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\component\" />
-    <Folder Include="src\app\model\" />
+    <Folder Include="src\app\model\steamgriddb\" />
     <Folder Include="src\app\shared\" />
     <Folder Include="src\app\services\" />
     <Folder Include="src\app\pages\" />

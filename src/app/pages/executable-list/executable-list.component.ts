@@ -22,11 +22,11 @@ export class ExecutableListComponent implements OnInit {
       return this.executables.filter((x: Executable) => !this.selectedplateforme.value || x.PlateformeId === this.selectedplateforme.value);
   }
 
-  changefilteredData() {
-    if (this.selectedplateforme.value == "-1")
+  onPlateformeChange(event: any) {
+    if (event.value == "-1")
       this.filteredexecutables = this.executables;
     else
-      this.filteredexecutables = this.executables.filter((x: Executable) => !this.selectedplateforme.value || x.PlateformeId === this.selectedplateforme.value);
+      this.filteredexecutables = this.executables.filter((x: Executable) => !event || x.PlateformeId === event.value);
   }
 
   ngOnInit(): void {

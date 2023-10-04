@@ -5,5 +5,7 @@ export enum ParamEnum {
   SteamUrlInfos = '4',
   LookForSteamGames = '5',
   LookForOriginGames = '6',
-  LookForEpicGames = '7'
+  LookForEpicGames = '7',
+  SteamGridDBApiKey = '14'
+
 }

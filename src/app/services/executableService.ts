@@ -19,4 +19,9 @@ export class ExecutableService {
       })
     );
   }
+
+  getExecutableByIdData(id: number): Observable<Executable> {
+    var urlpath = this.apibaseUrl + 'single_read.php?Id=' + id;
+    return this.http.get<Executable>(urlpath);
+  }
 }
