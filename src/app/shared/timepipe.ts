@@ -18,6 +18,7 @@ export class TimestampToDatePipe implements PipeTransform {
 
     //return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
-    return `${year}-${month}-${day}`;
+    //return `${year}-${month}-${day}`;
+    return `${year}`;
   }
 }

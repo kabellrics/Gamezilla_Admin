@@ -68,16 +68,28 @@
           </mat-form-field>
         </div>
       </div>
-
       <div class="row">
-        <button mat-button (click)="toggleDropdown()">Chercher sur Steamgriddb</button>
-        <mat-form-field *ngIf="showDropdown">
-          <mat-label>Résultat</mat-label>
-          <mat-select (selectionChange)="onSelectionChange($event)">
-            <mat-option *ngFor="let option of steamgriddbresult" [value]="option.id">{{ option.name }} ({{option.release_date! | timestampToDate}})</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <div class="search-container">
+          <mat-label>Rechercher des assets</mat-label>
+          <mat-form-field>
+            <input matInput [(ngModel)]="searchText" [placeholder]="searchText">
+          </mat-form-field>
+          <button mat-raised-button (click)="searchAssets('SGDB')">Steamgrid</button>
+          <button mat-raised-button (click)="searchAssets('IGDB')">IGDB</button>
+          <button mat-raised-button (click)="searchAssets('Screenscraper')">Screenscraper</button>
+        </div>
       </div>
+
+        <div *ngIf="isExpanded" class="results-container">
+          <div class="result-grid">
+            <div class="result" *ngFor="let result of searchResults">
+              {{ result.name }} ({{result.release_date! | timestampToDate}})
+            </div>
+          </div>
+          <button mat-raised-button (click)="clearResults()">Fermer</button>
+        </div>
+
+
         <div class="row">
         <div class="col">
           <div class="image-preview-cover">

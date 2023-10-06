@@ -71,3 +71,41 @@
   /*max-width: 400px;*/ /* Largeur maximale du formulaire (ajustez selon vos besoins) */
   margin: 0 auto;
 }
+
+/* Styles pour le conteneur de recherche */
+.search-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Styles pour les boutons de recherche */
+button {
+  margin-left: 10px;
+}
+
+/* Styles pour la zone de résultats */
+.results-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Styles pour la grille de résultats */
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 colonnes égales */
+  gap: 10px; /* Espacement entre les résultats */
+}
+
+/* Styles pour chaque résultat dans la grille */
+.result {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styles pour le bouton de fermeture */
+button {
+  margin-top: 10px;
+}

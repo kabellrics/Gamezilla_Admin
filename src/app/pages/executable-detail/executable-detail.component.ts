@@ -15,33 +15,46 @@ export class ExecutableDetailComponent implements OnInit {
   @Input()
   executable: any;
   steamgriddbId: any;
-  showDropdown = false;
-  steamgriddbresult: SGDBGame[] = [];
+  isExpanded: boolean = false;
+  @Input()
+  searchText: string = '';
+  searchResults: SGDBGame[] = [];
   constructor(private route: ActivatedRoute, private executableService: ExecutableService, private steamGridDBService: SteamGridDbService) { }
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id = params['id'];
       this.executableService.getExecutableByIdData(id).subscribe(data => {
         this.executable = data;
+        this.searchText = this.executable.Name;
       },
         (error) => {
           // Gérer l'erreur ici, par exemple, afficher un message d'erreur à l'utilisateur
           console.error('Une erreur s\'est produite :', error);
         });
     });
-    }
-  toggleDropdown() {
-    this.showDropdown = !this.showDropdown;
+  }
 
-    if (this.showDropdown) {
-      this.steamGridDBService.searchGamesByName(this.executable.Name).subscribe((data) =>
-      {
-        this.steamgriddbresult = data.data;
+  searchAssets(provider: string) {
+    // Vous devrez implémenter l'appel API approprié en fonction du fournisseur choisi (Steamgrid, IGDB, Screenscraper).
+    // Remplacez l'URL ci-dessous par l'URL de votre API.
+    if (provider == 'SGDB') {
+      this.steamGridDBService.searchGamesByName(this.searchText).subscribe((results) => {
+        this.searchResults = results.data;
+        this.isExpanded = true;
       });
     }
+    else if (provider == 'IGDB') { }
+    else if (provider == 'Screenscraper') { }
+
+    //this.http.get<string[]>(apiUrl).subscribe((results) => {
+    //  this.searchResults = results;
+    //  this.isExpanded = true;
+    //});
   }
-  onSelectionChange(event: any) {
-    console.log('Option sélectionnée :', event.value);
-    // Vous pouvez faire quelque chose avec l'option sélectionnée ici
+
+  clearResults() {
+    this.searchResults = [];
+    this.isExpanded = false;
   }
 }

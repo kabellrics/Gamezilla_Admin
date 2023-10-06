@@ -8,8 +8,8 @@ import { Observable, catchError, throwError } from "rxjs";
   providedIn: 'root'
 })
 export class SteamGridDbService {
-    private apiUrl = 'https://www.steamgriddb.com/api/v2';
-    apiKey: string | any;
+  private apiUrl = 'http://192.168.1.17:900/api/steamgriddb/';
+    apiKey: string | undefined;
 
   constructor(private http: HttpClient, private parametreService: ParameterService) {
     this.parametreService.getParameterData().subscribe((data) => {
@@ -19,32 +19,8 @@ export class SteamGridDbService {
   }
 
   searchGamesByName(gameName: string): Observable<SGBDGameResult> {
-    const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': '*',
-      'Authorization': 'Bearer ' + this.apiKey
-    });
-
-    const url = `${this.apiUrl}/search/autocomplete/${gameName}`;
-
-    return this.http.get<SGBDGameResult>(url, { headers });
-    //const axios = require('axios');
-
-    //let config = {
-    //  method: 'get',
-    //  maxBodyLength: Infinity,
-    //  url: this.apiUrl+'/search/autocomplete/'+gameName,
-    //  headers: {
-    //    'Authorization': 'Bearer ' + this.apiKey
-    //  }
-    //};
-
-    //axios.request(config)
-    //  .then((response: { data: any; }) => {
-    //    return JSON.stringify(response.data);
-    //  })
-    //  .catch((error: any) => {
-    //    console.log(error);
-    //  });
+    var urlpath = this.apiUrl + 'searchbyname.php?name=' + gameName + '&token=' + this.apiKey;
+    return this.http.get<SGBDGameResult>(urlpath);
   }
 
   getLogoBySteamgriddbId(steamgriddbId: string) {
@@ -65,20 +41,4 @@ export class SteamGridDbService {
     // Par exemple, vous pouvez effectuer une requête HTTP GET à l'URL `${this.apiUrl}/games/${steamgriddbId}/hero`.
   }
 
-  //searchAutocompleteGrid(text: string): Observable<SGBDGameResult> {
-  //  const headers = new HttpHeaders({
-  //    'Authorization': `Bearer ${this.apiKey}`
-  //  });
-
-  //  const options = { headers: headers };
-  //  const url = `${this.apiUrl}/api/v2/search/autocomplete/${text}`;
-
-  //  return this.http.get<SGBDGameResult>(url, options).pipe(
-  //    catchError((error: any) => {
-  //      // Gérer l'erreur ici et renvoyer une erreur observable
-  //      console.error('Erreur HTTP :', error);
-  //      return throwError(error);
-  //    })
-  //  );
-  //}
 }
