@@ -12,11 +12,16 @@ import { SGDBGame } from '../../model/steamgriddb/SGDBGame';
 })
 export class ExecutableDetailComponent implements OnInit {
 
-  @Input()
   executable: any;
   steamgriddbId: any;
+  igdbId: any;
+  screenscraperId: any;
   isExpanded: boolean = false;
-  @Input()
+  isCoverExpanded: boolean = false;
+  isLogoExpanded: boolean = false;
+  isHeroExpanded: boolean = false;
+  //isScraperCoverPanelOpen: boolean = false;
+  //isCoverPanelOpen: boolean = false;
   searchText: string = '';
   searchResults: SGDBGame[] = [];
   constructor(private route: ActivatedRoute, private executableService: ExecutableService, private steamGridDBService: SteamGridDbService) { }
@@ -34,7 +39,13 @@ export class ExecutableDetailComponent implements OnInit {
         });
     });
   }
-
+  onSearchTextChange(event: any) {
+    const newValue = event.target.value;
+    this.searchText = newValue;
+  }
+  setsteamgriddbId(newid: string) {
+    this.steamgriddbId = newid;
+  }
   searchAssets(provider: string) {
     // Vous devrez implémenter l'appel API approprié en fonction du fournisseur choisi (Steamgrid, IGDB, Screenscraper).
     // Remplacez l'URL ci-dessous par l'URL de votre API.

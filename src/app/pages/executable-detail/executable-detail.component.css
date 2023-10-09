@@ -94,18 +94,38 @@ button {
 /* Styles pour la grille de résultats */
 .result-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 colonnes égales */
+  grid-template-columns: repeat(5, 1fr); /* 4 colonnes égales */
   gap: 10px; /* Espacement entre les résultats */
 }
 
 /* Styles pour chaque résultat dans la grille */
 .result {
-  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+/*  width:100%;*/
+  height:100%;
+}
+/* Styles pour chaque résultat dans la grille */
+.custom-card {
+  margin: 0px;
+  padding: 0px;
+/*  width: 100%;*/
+  height: 100%;
 }
 
 /* Styles pour le bouton de fermeture */
 button {
   margin-top: 10px;
+}
+
+/* Styles pour le nom (name) */
+.name {
+  font-size: 150%; /* Taille de police 150% par rapport à l'id */
+  margin-top: 10px; /* Espacement entre l'id et le nom */
+}
+
+/* Styles pour l'année (year) */
+.year {
+  font-size: 24px; /* Taille de police identique à l'id */
+  margin-top: 5px; /* Espacement entre le nom et l'année */
 }
