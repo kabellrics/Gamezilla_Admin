@@ -70,42 +70,54 @@
       </div>
 
       <div class="row">
-        <div class="search-container">
-          <mat-label>Rechercher des assets</mat-label>
-          <mat-form-field>
-            <input matInput [value]="searchText" [placeholder]="searchText" (input)="onSearchTextChange($event)"/> <!--[placeholder]="searchText"-->
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>SteamGrid DB Id</mat-label>
+            <input matInput placeholder="SGDB ID" [(ngModel)]="executable.SGDBID" name="SGDB ID">
+            <button mat-button (click)="searchAssets('SGDB')">Rechercher</button>
           </mat-form-field>
-          <button mat-raised-button (click)="searchAssets('SGDB')">Steamgrid</button>
-          <button mat-raised-button (click)="searchAssets('IGDB')">IGDB</button>
-          <button mat-raised-button (click)="searchAssets('Screenscraper')">Screenscraper</button>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>IGDB Id</mat-label>
+            <input matInput placeholder="IGDB ID" [(ngModel)]="executable.IGDBID" name="IGDB ID">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Screenscraper Id</mat-label>
+            <input matInput placeholder="SSCP ID" [(ngModel)]="executable.SSCPID" name="SSCP ID">
+          </mat-form-field>
         </div>
       </div>
-
-        <div *ngIf="isExpanded" class="results-container">
+      <div class="row" style=" background-color: transparent;">
+        <mat-expansion-panel [expanded]="isSGDBExpanded" hideToggle style="background-color: transparent;">
           <div class="result-grid">
             <div class="result" *ngFor="let result of searchResults">
-              <!--<button mat-button (click)="setsteamgriddbId(result.id.toString())">-->
-                <mat-card class="custom-card" (click)="setsteamgriddbId(result.id.toString())">
-                  <mat-card-title>{{ result.id }}</mat-card-title>
-                  <mat-card-content>
-                    <div class="name">{{ result.name }}</div>
-                    <div class="year">({{ result.release_date! | timestampToDate }})</div>
-                  </mat-card-content>
-                </mat-card>
-                <!--{{ result.name }} ({{result.release_date! | timestampToDate}})-->
-              <!--</button>-->
+              <mat-card class="custom-card" (click)="setsteamgriddbId(result.id.toString())">
+                <mat-card-title>{{ result.id }}</mat-card-title>
+                <mat-card-content>
+                  <div class="name">{{ result.name }}</div>
+                  <div class="year">({{ result.release_date! | timestampToDate }})</div>
+                </mat-card-content>
+              </mat-card>
             </div>
+            <button mat-raised-button (click)="clearResults()">Fermer</button>
           </div>
-          <button mat-raised-button (click)="clearResults()">Fermer</button>
-        </div>
+        </mat-expansion-panel>
+      </div>
 
-
-        <div class="row">
+      <div class="row">
         <div class="col">
           <div class="image-preview-cover">
             <mat-form-field class="example-full-width-image">
               <mat-label>Cover</mat-label>
               <input matInput placeholder="Cover" [(ngModel)]="executable.Cover" name="Cover">
+              <div class="row">
+                <button mat-button (click)="searchCoverAssets('SGDB')">Steamgrid</button>
+                <button mat-button (click)="searchCoverAssets('Local')">Fichier Local</button>
+                <!--<button mat-button (click)="searchCoverAssets('Screenscraper')">Screenscraper</button>-->
+              </div>
             </mat-form-field>
             <img *ngIf="executable.Cover" [src]="executable.Cover | imglink" alt="Cover Preview">
           </div>
@@ -122,17 +134,30 @@
         </div>
       </div>
 
-      <div class="image-preview-hero">
-        <mat-form-field class="example-full-width-image">
-          <mat-label>Hero</mat-label>
-          <input matInput placeholder="Heroe" [(ngModel)]="executable.Heroe" name="Heroe">
-        </mat-form-field>
-        <div class="image-container">
-          <img *ngIf="executable.Heroe" [src]="executable.Heroe | imglink" alt="Heroe Preview">
-        </div>
+      <!--<div class="row" style=" background-color: transparent;">-->
+        <mat-expansion-panel [expanded]="isCoverExpanded" hideToggle style="background-color: transparent;padding:0px">
+          <mat-list class="horizontal-card-list">
+            <mat-card *ngFor="let item of coverSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
+              <mat-card-content style=" background-color: transparent; margin:5px;">
+                <img [src]="item | imglink" alt="Cover Preview" style=" background-color: transparent;">
+              </mat-card-content>
+            </mat-card>
+          </mat-list>
+          <button mat-raised-button (click)="clearcoverResults()">Fermer</button>
+        </mat-expansion-panel>
+      <!--</div>-->
+
+        <div class="image-preview-hero">
+          <mat-form-field class="example-full-width-image">
+            <mat-label>Hero</mat-label>
+            <input matInput placeholder="Heroe" [(ngModel)]="executable.Heroe" name="Heroe">
+          </mat-form-field>
+          <div class="image-container">
+            <img *ngIf="executable.Heroe" [src]="executable.Heroe | imglink" alt="Heroe Preview">
+          </div>
         </div>
 
         <!-- Add Save button here to submit changes -->
-</form>
+    </form>
   </mat-card-content>
 </mat-card>

@@ -96,14 +96,16 @@ button {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 4 colonnes égales */
   gap: 10px; /* Espacement entre les résultats */
+  background-color:transparent;
 }
 
 /* Styles pour chaque résultat dans la grille */
 .result {
   border: 1px solid #ccc;
   border-radius: 5px;
-/*  width:100%;*/
-  height:100%;
+  /*  width:100%;*/
+  height: 100%;
+  background-color: transparent;
 }
 /* Styles pour chaque résultat dans la grille */
 .custom-card {
@@ -129,3 +131,33 @@ button {
   font-size: 24px; /* Taille de police identique à l'id */
   margin-top: 5px; /* Espacement entre le nom et l'année */
 }
+
+/* Styles pour la liste horizontale de cartes */
+.horizontal-card-list {
+  display: flex; /* Affichage horizontal */
+  flex-direction: row; /* Affichage horizontal */
+  overflow-x: auto; /* Défilement horizontal si nécessaire */
+  max-width: 100%; /* Pour permettre le défilement horizontal */
+  height: 300px;
+  padding: 0px;
+  background-color: transparent;
+}
+
+/* Assurez-vous que les cartes ont une largeur fixe pour un alignement uniforme */
+mat-list-item {
+  width: 200px; /* Largeur fixe des cartes (ajustez selon vos besoins) */
+  height: 300px; /* Définissez la même hauteur que le conteneur */
+  padding: 0px;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Ajustement de l'image pour conserver le ratio 2/3 */
+}
+

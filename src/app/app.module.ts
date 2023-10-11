@@ -15,7 +15,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSortModule } from '@angular/material/sort';
+import { MatListModule } from '@angular/material/list';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { SettingsListComponent } from './pages/settings-list/settings-list.component';
 import { PlateformeListComponent } from './pages/plateforme-list/plateforme-list.component';
@@ -55,7 +57,8 @@ import { TimestampToDatePipe } from './shared/timepipe';
     MatIconModule, MatGridListModule, MatToolbarModule,
     MatButtonModule, MatCardModule, MatTableModule,
     MatFormFieldModule, MatInputModule, MatSelectModule,
-    MatCheckboxModule, MatSortModule, DragDropModule, MatExpansionModule
+    MatCheckboxModule, MatSortModule, DragDropModule,
+    MatExpansionModule, MatListModule, ScrollingModule
   ],
   providers: [ParameterService],
   bootstrap: [AppComponent]

@@ -18,4 +18,7 @@ export interface Executable {
   PlateformeId: string
   StartParam: string
   StoreId: string
+  SGDBID: string
+  IGDBID: string
+  SSCPID: string
 }

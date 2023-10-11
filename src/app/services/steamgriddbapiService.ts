@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { ParameterService } from "./parameterService";
 import { SGBDGameResult, SGDBGame } from "../model/steamgriddb/SGDBGame";
 import { Observable, catchError, throwError } from "rxjs";
+import { ImgResult } from "../model/steamgriddb/ImgResult";
 
 @Injectable({
   providedIn: 'root'
@@ -23,19 +24,18 @@ export class SteamGridDbService {
     return this.http.get<SGBDGameResult>(urlpath);
   }
 
-  getLogoBySteamgriddbId(steamgriddbId: string) {
-    // Implémentez la recherche de logo par SteamGridDB ID.
-    // Utilisez le package node-steamgriddb pour effectuer la recherche.
-    // Par exemple, vous pouvez effectuer une requête HTTP GET à l'URL `${this.apiUrl}/games/${steamgriddbId}/logo`.
+  getCoverBySteamgriddbId(steamgriddbId: string): Observable<ImgResult> {
+    var urlpath = this.apiUrl + 'coverbygameid.php?id=' + steamgriddbId + '&token=' + this.apiKey;
+    return this.http.get<ImgResult>(urlpath);
   }
 
-  getGridBySteamgriddbId(steamgriddbId: string, width: number, height: number) {
+  getLogoBySteamgriddbId(steamgriddbId: string)/*: Observable<ImgResult>*/ {
     // Implémentez la recherche de Grid au format 600x900 par SteamGridDB ID.
     // Utilisez le package node-steamgriddb pour effectuer la recherche.
     // Par exemple, vous pouvez effectuer une requête HTTP GET à l'URL `${this.apiUrl}/games/${steamgriddbId}/grid?width=${width}&height=${height}`.
   }
 
-  getHeroBySteamgriddbId(steamgriddbId: string) {
+  getHeroBySteamgriddbId(steamgriddbId: string)/*: Observable<ImgResult>*/ {
     // Implémentez la recherche de héros en utilisant le SteamGridDB ID.
     // Utilisez le package node-steamgriddb pour effectuer la recherche.
     // Par exemple, vous pouvez effectuer une requête HTTP GET à l'URL `${this.apiUrl}/games/${steamgriddbId}/hero`.
