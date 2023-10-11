@@ -134,13 +134,13 @@ button {
 
 /* Styles pour la liste horizontale de cartes */
 .horizontal-card-list {
-  display: flex; /* Affichage horizontal */
+  /*display: flex;*/ /* Affichage horizontal */
   flex-direction: row; /* Affichage horizontal */
   overflow-x: auto; /* Défilement horizontal si nécessaire */
   max-width: 100%; /* Pour permettre le défilement horizontal */
   height: 300px;
-  padding: 0px;
   background-color: transparent;
+  display: flex;
 }
 
 /* Assurez-vous que les cartes ont une largeur fixe pour un alignement uniforme */
