@@ -15,9 +15,13 @@ export class ExecutableDetailComponent implements OnInit {
   executable: any;
   isSGDBExpanded: boolean = false;
   isCoverExpanded: boolean = false;
+  isLogoExpanded: boolean = false;
+  isHeroExpanded: boolean = false;
   searchText: string = '';
   searchResults: SGDBGame[] = [];
   coverSearchResults: string[] = [];
+  logoSearchResults: string[] = [];
+  heroSearchResults: string[] = [];
   constructor(private route: ActivatedRoute, private executableService: ExecutableService, private steamGridDBService: SteamGridDbService) { }
 
   ngOnInit(): void {
@@ -47,8 +51,31 @@ export class ExecutableDetailComponent implements OnInit {
         });
       }
     }
-    else if (provider == 'IGDB') { }
-    else if (provider == 'Screenscraper') { }
+    else if (provider == 'Local') { }
+  }
+  searchLogoAssets(provider: string) {
+    if (provider == 'SGDB')
+    {
+      if (this.executable.SGDBID != null) {
+        this.steamGridDBService.getLogoBySteamgriddbId(this.executable.SGDBID).subscribe((response: any) => {
+          this.logoSearchResults = response.data.map((item: { url: any; }) => item.url);
+          this.isLogoExpanded = true;
+        });
+      }
+    }
+    else if (provider == 'Local') { }
+  }
+  searchHeroAssets(provider: string) {
+    if (provider == 'SGDB')
+    {
+      if (this.executable.SGDBID != null) {
+        this.steamGridDBService.getHeroBySteamgriddbId(this.executable.SGDBID).subscribe((response: any) => {
+          this.heroSearchResults = response.data.map((item: { url: any; }) => item.url);
+          this.isHeroExpanded = true;
+        });
+      }
+    }
+    else if (provider == 'Local') { }
   }
   searchAssets(provider: string) {
     // Vous devrez implémenter l'appel API approprié en fonction du fournisseur choisi (Steamgrid, IGDB, Screenscraper).
@@ -67,6 +94,14 @@ export class ExecutableDetailComponent implements OnInit {
     this.executable.Cover = cover;
     this.clearcoverResults();
   }
+  chooseHero(cover: string) {
+    this.executable.Heroe = cover;
+    this.clearheroResults();
+  }
+  chooseLogo(cover: string) {
+    this.executable.Logo = cover;
+    this.clearlogoResults();
+  }
 
   clearResults() {
     this.searchResults = [];
@@ -76,5 +111,13 @@ export class ExecutableDetailComponent implements OnInit {
   clearcoverResults() {
     this.coverSearchResults = [];
     this.isCoverExpanded = false;
+  }
+  clearlogoResults() {
+    this.logoSearchResults = [];
+    this.isLogoExpanded = false;
+  }
+  clearheroResults() {
+    this.heroSearchResults = [];
+    this.isHeroExpanded = false;
   }
 }

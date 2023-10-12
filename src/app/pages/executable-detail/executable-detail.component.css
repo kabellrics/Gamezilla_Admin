@@ -132,30 +132,44 @@ button {
   margin-top: 5px; /* Espacement entre le nom et l'année */
 }
 
-/* Styles pour la liste horizontale de cartes */
 .horizontal-card-list {
-  /*display: flex;*/ /* Affichage horizontal */
-  flex-direction: row; /* Affichage horizontal */
-  overflow-x: auto; /* Défilement horizontal si nécessaire */
-  max-width: 100%; /* Pour permettre le défilement horizontal */
-  height: 300px;
-  background-color: transparent;
   display: flex;
-}
-
-/* Assurez-vous que les cartes ont une largeur fixe pour un alignement uniforme */
-mat-list-item {
-  width: 200px; /* Largeur fixe des cartes (ajustez selon vos besoins) */
-  height: 300px; /* Définissez la même hauteur que le conteneur */
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  height: 400px;
   padding: 0px;
-  margin: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
+}
+.mat-list-item {
+    padding:0px;
+  flex: 0 0 auto;
+  /*width: 200px;*/
+  /*height: 300px;*/
 }
 
-img {
+.img-cover {
+  margin: 0px;
+  padding: 0px;
+  width: 200px;
+  height: 300px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Ajustement de l'image pour conserver le ratio 2/3 */
+}
+.img-logo {
+  margin: 0px;
+  padding: 0px;
+  width: auto;
+  height: 300px;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover; /* Ajustement de l'image pour conserver le ratio 2/3 */
+}
+.img-hero {
+  margin: 0px;
+  padding: 0px;
+  width: 929px;
+  height: 300px;
   max-width: 100%;
   max-height: 100%;
   object-fit: cover; /* Ajustement de l'image pour conserver le ratio 2/3 */

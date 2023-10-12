@@ -123,41 +123,79 @@
           </div>
         </div>
 
-        <div class="col">
-          <div class="image-preview-logo">
-            <mat-form-field class="example-full-width-image">
-              <mat-label>Logo</mat-label>
-              <input matInput placeholder="Logo" [(ngModel)]="executable.Logo" name="Logo">
-            </mat-form-field>
-            <img *ngIf="executable.Logo" [src]="executable.Logo | imglink" alt="Logo Preview">
+          <div class="col">
+            <div class="image-preview-logo">
+              <mat-form-field class="example-full-width-image">
+                <mat-label>Logo</mat-label>
+                <input matInput placeholder="Logo" [(ngModel)]="executable.Logo" name="Logo">
+                <div class="row">
+                  <button mat-button (click)="searchLogoAssets('SGDB')">Steamgrid</button>
+                  <button mat-button (click)="searchLogoAssets('Local')">Fichier Local</button>
+                  <!--<button mat-button (click)="searchCoverAssets('Screenscraper')">Screenscraper</button>-->
+                </div>
+              </mat-form-field>
+              <img *ngIf="executable.Logo" [src]="executable.Logo | imglink" alt="Logo Preview">
+            </div>
           </div>
-        </div>
       </div>
 
       <!--<div class="row" style=" background-color: transparent;">-->
-        <mat-expansion-panel [expanded]="isCoverExpanded" hideToggle style="background-color: transparent;padding:0px">
-          <mat-list class="horizontal-card-list">
-            <mat-card *ngFor="let item of coverSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
-              <mat-card-content style=" background-color: transparent; margin:5px;">
-                <img [src]="item | imglink" alt="Cover Preview" style=" background-color: transparent;">
-              </mat-card-content>
-            </mat-card>
-          </mat-list>
-          <button mat-raised-button (click)="clearcoverResults()">Fermer</button>
-        </mat-expansion-panel>
+      <mat-expansion-panel [expanded]="isCoverExpanded" hideToggle style="background-color: transparent;padding:0px">
+        <mat-list class="horizontal-card-list">
+          <mat-card *ngFor="let item of coverSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
+            <mat-card-content style=" background-color: transparent; margin:5px;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-cover" style=" background-color: transparent;">
+            </mat-card-content>
+          </mat-card>
+        </mat-list>
+        <button mat-raised-button (click)="clearcoverResults()">Fermer</button>
+      </mat-expansion-panel>
       <!--</div>-->
 
+
+      <mat-expansion-panel [expanded]="isLogoExpanded" hideToggle style="background-color: transparent;padding:0px">
+        <mat-list class="horizontal-card-list">
+          <mat-card *ngFor="let item of logoSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
+            <mat-card-content style=" background-color: transparent; margin:5px;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-logo" style=" background-color: transparent;">
+            </mat-card-content>
+          </mat-card>
+        </mat-list>
+        <button mat-raised-button (click)="clearlogoResults()">Fermer</button>
+      </mat-expansion-panel>
+
+
+      <div class="row">
+      <div class="col">
         <div class="image-preview-hero">
           <mat-form-field class="example-full-width-image">
             <mat-label>Hero</mat-label>
             <input matInput placeholder="Heroe" [(ngModel)]="executable.Heroe" name="Heroe">
+            <div class="row">
+              <button mat-button (click)="searchHeroAssets('SGDB')">Steamgrid</button>
+              <button mat-button (click)="searchHeroAssets('Local')">Fichier Local</button>
+              <!--<button mat-button (click)="searchCoverAssets('Screenscraper')">Screenscraper</button>-->
+            </div>
           </mat-form-field>
           <div class="image-container">
             <img *ngIf="executable.Heroe" [src]="executable.Heroe | imglink" alt="Heroe Preview">
           </div>
         </div>
+      </div>
+      </div>
 
-        <!-- Add Save button here to submit changes -->
+      <mat-expansion-panel [expanded]="isHeroExpanded" hideToggle style="background-color: transparent;padding:0px">
+        <mat-list class="horizontal-card-list">
+          <mat-card *ngFor="let item of heroSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
+            <mat-card-content style=" background-color: transparent; margin:5px;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-hero" style=" background-color: transparent;">
+            </mat-card-content>
+          </mat-card>
+        </mat-list>
+        <button mat-raised-button (click)="clearheroResults()">Fermer</button>
+      </mat-expansion-panel>
+
+      <!-- Add Save button here to submit changes -->
     </form>
   </mat-card-content>
 </mat-card>
