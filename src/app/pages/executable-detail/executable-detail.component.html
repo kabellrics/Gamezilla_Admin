@@ -144,7 +144,8 @@
         <mat-list class="horizontal-card-list">
           <mat-card *ngFor="let item of coverSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
             <mat-card-content style=" background-color: transparent; margin:5px;">
-              <img [src]="item | imglink" alt="Cover Preview" class="img-cover" style=" background-color: transparent;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-cover"
+                  (dblclick)="chooseCover(item)" style=" background-color: transparent;">
             </mat-card-content>
           </mat-card>
         </mat-list>
@@ -157,7 +158,8 @@
         <mat-list class="horizontal-card-list">
           <mat-card *ngFor="let item of logoSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
             <mat-card-content style=" background-color: transparent; margin:5px;">
-              <img [src]="item | imglink" alt="Cover Preview" class="img-logo" style=" background-color: transparent;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-logo"
+                  (dblclick)="chooseLogo(item)" style=" background-color: transparent;">
             </mat-card-content>
           </mat-card>
         </mat-list>
@@ -188,7 +190,8 @@
         <mat-list class="horizontal-card-list">
           <mat-card *ngFor="let item of heroSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
             <mat-card-content style=" background-color: transparent; margin:5px;">
-              <img [src]="item | imglink" alt="Cover Preview" class="img-hero" style=" background-color: transparent;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-hero"
+                  (dblclick)="chooseHero(item)" style=" background-color: transparent;">
             </mat-card-content>
           </mat-card>
         </mat-list>
@@ -196,6 +199,10 @@
       </mat-expansion-panel>
 
       <!-- Add Save button here to submit changes -->
+
+      <div class="row">
+        <button mat-raised-button color="primary" (dllclick)="saveChange()">Enregistrer les changements</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

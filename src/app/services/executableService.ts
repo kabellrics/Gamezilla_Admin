@@ -24,4 +24,9 @@ export class ExecutableService {
     var urlpath = this.apibaseUrl + 'single_read.php?Id=' + id;
     return this.http.get<Executable>(urlpath);
   }
+  saveAssetByUrl(url: string, type: string, name: string): Observable<string> {
+    var urlpath = this.apibaseUrl + 'uploadurlasset.php?url=' +url+'&type='+type+'&newname='+name;
+    return this.http.get<string>(urlpath);
+
+  }
 }
