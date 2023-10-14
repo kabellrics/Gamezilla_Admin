@@ -93,14 +93,12 @@ export class ExecutableDetailComponent implements OnInit {
     const obs3: Observable<string> = this.dllLogo();
     forkJoin([obs1, obs2, obs3]).subscribe(results => {
       // results contient les résultats des trois Observables dans l'ordre
-      const result1 = results[0];
-      const result2 = results[1];
-      const result3 = results[2];
       if (results[0] != '') { this.executable.Cover = results[0]; }
       if (results[1] != '') { this.executable.Heroe = results[1]; }
       if (results[2] != '') { this.executable.Logo = results[2]; }
 
-      
+      this.executableService.postExecutableUpdate(this.executable);
+      alert('Modification effectué')
       // Effectuez le traitement après que les trois Observables soient terminés
       // ...
     });

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, map, of } from 'rxjs';
 import { Executable, ExecutablesResult } from '../model/executable';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -19,14 +19,22 @@ export class ExecutableService {
       })
     );
   }
-
+  postExecutableUpdate(item: Executable){
+    var urlpath = this.apibaseUrl + 'update.php';
+    this.http.post<Executable>(urlpath, item);
+  }
   getExecutableByIdData(id: number): Observable<Executable> {
     var urlpath = this.apibaseUrl + 'single_read.php?Id=' + id;
     return this.http.get<Executable>(urlpath);
   }
   saveAssetByUrl(url: string, type: string, name: string): Observable<string> {
-    var urlpath = this.apibaseUrl + 'uploadurlasset.php?url=' +url+'&type='+type+'&newname='+name;
-    return this.http.get<string>(urlpath);
-
+    var urlpath = this.apibaseUrl + 'uploadurlasset.php?url=' + url + '&type=' + type + '&newname=' + name;
+    //return this.http.get<string>(urlpath, { responseType: 'text' });
+    return this.http.get(urlpath, { responseType: 'arraybuffer' }).pipe(
+      map((response: ArrayBuffer) => {
+        const textDecoder = new TextDecoder('utf-8');
+        return textDecoder.decode(response);
+      })
+    );
   }
 }
