@@ -19,13 +19,14 @@ export class ExecutableService {
       })
     );
   }
-  postExecutableUpdate(item: Executable): Observable<Executable>{
+  postExecutableUpdate(item: Executable): Observable<any>{
     try {
-      const itemJson = JSON.stringify(item); // Convertir l'objet en JSON
+      var itemJson = JSON.stringify(item); // Convertir l'objet en JSON
+      itemJson = itemJson.replaceAll('true', '1').replaceAll('false', '0');
       var urlpath = this.apibaseUrl + 'update.php';
       return this.http.post<Executable>(urlpath, itemJson)
         .pipe(
-          catchError((error: any, caught: Observable<Executable>): Observable<Executable> => {
+          catchError((error: any, caught: Observable<any>): Observable<any> => {
             var errorMessage = error.message;
             console.error('There was an error!', error);
             return of(); // Retourner un observable vide en cas d'erreur
