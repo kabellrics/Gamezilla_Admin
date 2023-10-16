@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { Executable, ExecutablesResult } from '../model/executable';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
@@ -19,9 +19,22 @@ export class ExecutableService {
       })
     );
   }
-  postExecutableUpdate(item: Executable){
-    var urlpath = this.apibaseUrl + 'update.php';
-    this.http.post<Executable>(urlpath, item);
+  postExecutableUpdate(item: Executable): Observable<Executable>{
+    try {
+      const itemJson = JSON.stringify(item); // Convertir l'objet en JSON
+      var urlpath = this.apibaseUrl + 'update.php';
+      return this.http.post<Executable>(urlpath, itemJson)
+        .pipe(
+          catchError((error: any, caught: Observable<Executable>): Observable<Executable> => {
+            var errorMessage = error.message;
+            console.error('There was an error!', error);
+            return of(); // Retourner un observable vide en cas d'erreur
+          })
+        );
+    } catch (error) {
+      console.error('Error while converting item to JSON:', error);
+      return of(); // Retourner un observable vide en cas d'erreur de sérialisation
+    }
   }
   getExecutableByIdData(id: number): Observable<Executable> {
     var urlpath = this.apibaseUrl + 'single_read.php?Id=' + id;

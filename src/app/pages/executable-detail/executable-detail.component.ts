@@ -93,36 +93,46 @@ export class ExecutableDetailComponent implements OnInit {
     const obs3: Observable<string> = this.dllLogo();
     forkJoin([obs1, obs2, obs3]).subscribe(results => {
       // results contient les résultats des trois Observables dans l'ordre
-      if (results[0] != '') { this.executable.Cover = results[0]; }
-      if (results[1] != '') { this.executable.Heroe = results[1]; }
-      if (results[2] != '') { this.executable.Logo = results[2]; }
+      this.executable.Cover = results[0];
+      this.executable.Heroe = results[1];
+      this.executable.Logo = results[2];
 
-      this.executableService.postExecutableUpdate(this.executable);
-      alert('Modification effectué')
+      this.executableService.postExecutableUpdate(this.executable).subscribe(
+        (response) => {
+          // La requête a réussi, response contient la réponse du serveur
+          console.log('Réponse du serveur :', response);
+          alert('Modification effectué');
+        },
+        (error) => {
+          // Une erreur s'est produite
+          console.error('Erreur lors de la requête :', error);
+          alert('Modification non effectué');
+        }
+      );
       // Effectuez le traitement après que les trois Observables soient terminés
       // ...
     });
   }
 
   dllCover(): Observable<string> {
-    if (!this.executable.Cover.includes("upload")) {
+    if (!this.executable.Cover.includes("upload") && this.executable.Cover !== '' ) {
       return this.executableService.saveAssetByUrl(this.executable.Cover, 'cover', this.executable.Id);
     } else {
-      return of(''); // Renvoie un Observable vide si la condition n'est pas satisfaite
+      return of(this.executable.Cover); // Renvoie un Observable vide si la condition n'est pas satisfaite
     }
   }
   dllHero(): Observable<string> {
-    if (!this.executable.Heroe.includes("upload")) {
+    if (!this.executable.Heroe.includes("upload") && this.executable.Heroe !== '') {
       return this.executableService.saveAssetByUrl(this.executable.Heroe, 'hero', this.executable.Id);
     } else {
-      return of(''); // Renvoie un Observable vide si la condition n'est pas satisfaite
+      return of(this.executable.Heroe); // Renvoie un Observable vide si la condition n'est pas satisfaite
     }
   }
   dllLogo(): Observable<string> {
-    if (!this.executable.Logo.includes("upload")) {
+    if (!this.executable.Logo.includes("upload") && this.executable.Logo !== '') {
       return this.executableService.saveAssetByUrl(this.executable.Logo, 'logo', this.executable.Id);
     } else {
-      return of(''); // Renvoie un Observable vide si la condition n'est pas satisfaite
+      return of(this.executable.Logo); // Renvoie un Observable vide si la condition n'est pas satisfaite
     }
   }
   chooseCover(cover: string) {
