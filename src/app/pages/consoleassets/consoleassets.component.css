@@ -1,0 +1,5 @@
+.stretch-fill-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Pour remplir la zone tout en conservant le rapport hauteur/largeur */
+}

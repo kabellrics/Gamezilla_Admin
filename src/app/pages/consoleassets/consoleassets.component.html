@@ -1,0 +1,29 @@
+<mat-card>
+  <mat-card-title class="page-title">Liste des Executables</mat-card-title>
+  <mat-card-content>
+    <div class="container" style="background-color:grey">
+      <div class="row">
+        <table class="table table-striped table-dark table-bordered">
+          <thead>
+            <tr>
+              <th scope="col"><h2>Logo</h2></th>
+              <th scope="col"><h2>Background</h2></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of assetorderComparator">
+              <td width="50%" height="200px">
+              <img mat-card-image [src]="item.logo | assetlogo" alt="item.logo" class="stretch-fill-image" />
+                {{item.logo}}
+              </td>
+              <td width="50%" height="200px">
+                <img mat-card-image [src]="item.bck | assetbck" alt="item.bck" class="stretch-fill-image" />
+                {{item.bck}}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

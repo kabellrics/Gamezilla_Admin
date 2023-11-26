@@ -7,6 +7,7 @@ import { SettingsListComponent } from "./pages/settings-list/settings-list.compo
 import { PlateformeDetailComponent } from "./pages/plateforme-detail/plateforme-detail.component";
 import { PlateformeListReorderComponent } from "./pages/plateforme-list-reorder/plateforme-list-reorder.component";
 import { ExecutableDetailComponent } from "./pages/executable-detail/executable-detail.component";
+import { ConsoleassetsComponent } from "./pages/consoleassets/consoleassets.component";
 
 export const ROUTES: Routes = [
   //{ path: '**', redirectTo: 'home', pathMatch: 'full' },
@@ -19,4 +20,5 @@ export const ROUTES: Routes = [
   { path: 'plateformedetail/:id', component: PlateformeDetailComponent },
   { path: 'executabledetail/:id', component: ExecutableDetailComponent },
   { path: 'settings', component: SettingsListComponent },
+  { path: 'consoleasset', component: ConsoleassetsComponent },
 ];
