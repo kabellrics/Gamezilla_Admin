@@ -1,0 +1,214 @@
+<mat-card style="margin-top:15px; background-color:slategrey">
+  <!-- Nom de l'Item -->
+  <mat-card-title class="card-title">{{ nonexecutable.Name }}</mat-card-title>
+  <mat-card-content>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="Id" [(ngModel)]="nonexecutable.Id" name="Id" disabled>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Name" [(ngModel)]="nonexecutable.Name" name="Name">
+      </mat-form-field>
+
+      <div class="row">
+        <div class="col">
+          <mat-label>Est dans les favoris</mat-label>
+          <mat-checkbox [(ngModel)]="nonexecutable.Favorite" name="Favorite">Favorite</mat-checkbox>
+        </div>
+        <div class="col">
+          <mat-label>Est affiché par le Front</mat-label>
+          <mat-checkbox [(ngModel)]="nonexecutable.IsActif" name="IsActif">Active</mat-checkbox>
+        </div>
+      </div>
+
+      <div class="row">
+        <!--<div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>StoreId</mat-label>
+            <input matInput placeholder="StoreId" [(ngModel)]="nonexecutable.StoreId" name="StoreId">
+          </mat-form-field>
+        </div>-->
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Plateforme</mat-label>
+            <input matInput placeholder="PlateformeId" [(ngModel)]="nonexecutable.PlateformeId" name="PlateformeId">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Executable</mat-label>
+            <input matInput placeholder="PlateformeId" [(ngModel)]="nonexecutable.executableId" name="executableId">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Dernière date de lancement</mat-label>
+            <input matInput placeholder="LastStartDate" [(ngModel)]="nonexecutable.LastStartDate" name="Derniers Lancement">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Nombre de lancement</mat-label>
+            <input matInput placeholder="NbStart" [(ngModel)]="nonexecutable.NbStart" name="Nombre de Lancement">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Chemin</mat-label>
+            <input matInput placeholder="Path" [(ngModel)]="nonexecutable.Path" name="Path">
+          </mat-form-field>
+        </div>
+        <!--<div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Parametres</mat-label>
+            <input matInput placeholder="StartParam" [(ngModel)]="nonexecutable.StartParam" name="StartParam">
+          </mat-form-field>
+        </div>-->
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>SteamGrid DB Id</mat-label>
+            <input matInput placeholder="SGDB ID" [(ngModel)]="nonexecutable.SGDBID" name="SGDB ID">
+            <button mat-button (click)="searchAssets('SGDB')">Rechercher</button>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>IGDB Id</mat-label>
+            <input matInput placeholder="IGDB ID" [(ngModel)]="nonexecutable.IGDBID" name="IGDB ID">
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="example-full-width">
+            <mat-label>Screenscraper Id</mat-label>
+            <input matInput placeholder="SSCP ID" [(ngModel)]="nonexecutable.SSCPID" name="SSCP ID">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row" style=" background-color: transparent;">
+        <mat-expansion-panel [expanded]="isSGDBExpanded" hideToggle style="background-color: transparent;">
+          <div class="result-grid">
+            <div class="result" *ngFor="let result of searchResults">
+              <mat-card class="custom-card" (click)="setsteamgriddbId(result.id.toString())">
+                <mat-card-title>{{ result.id }}</mat-card-title>
+                <mat-card-content>
+                  <div class="name">{{ result.name }}</div>
+                  <div class="year">({{ result.release_date! | timestampToDate }})</div>
+                </mat-card-content>
+              </mat-card>
+            </div>
+            <button mat-raised-button (click)="clearResults()">Fermer</button>
+          </div>
+        </mat-expansion-panel>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="image-preview-cover">
+            <mat-form-field class="example-full-width-image">
+              <mat-label>Cover</mat-label>
+              <input matInput placeholder="Cover" [(ngModel)]="nonexecutable.Cover" name="Cover">
+              <div class="row">
+                <button mat-button (click)="searchCoverAssets('SGDB')">Steamgrid</button>
+                <button mat-button (click)="searchCoverAssets('Local')">Fichier Local</button>
+                <!--<button mat-button (click)="searchCoverAssets('Screenscraper')">Screenscraper</button>-->
+              </div>
+            </mat-form-field>
+            <img *ngIf="nonexecutable.Cover" [src]="nonexecutable.Cover | imglink" alt="Cover Preview">
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="image-preview-logo">
+            <mat-form-field class="example-full-width-image">
+              <mat-label>Logo</mat-label>
+              <input matInput placeholder="Logo" [(ngModel)]="nonexecutable.Logo" name="Logo">
+              <div class="row">
+                <button mat-button (click)="searchLogoAssets('SGDB')">Steamgrid</button>
+                <button mat-button (click)="searchLogoAssets('Local')">Fichier Local</button>
+                <!--<button mat-button (click)="searchCoverAssets('Screenscraper')">Screenscraper</button>-->
+              </div>
+            </mat-form-field>
+            <img *ngIf="nonexecutable.Logo" [src]="nonexecutable.Logo | imglink" alt="Logo Preview">
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="row" style=" background-color: transparent;">-->
+      <mat-expansion-panel [expanded]="isCoverExpanded" hideToggle style="background-color: transparent;padding:0px">
+        <mat-list class="horizontal-card-list">
+          <mat-card *ngFor="let item of coverSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
+            <mat-card-content style=" background-color: transparent; margin:5px;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-cover"
+                   (dblclick)="chooseCover(item)" style=" background-color: transparent;">
+            </mat-card-content>
+          </mat-card>
+        </mat-list>
+        <button mat-raised-button (click)="clearcoverResults()">Fermer</button>
+      </mat-expansion-panel>
+      <!--</div>-->
+
+
+      <mat-expansion-panel [expanded]="isLogoExpanded" hideToggle style="background-color: transparent;padding:0px">
+        <mat-list class="horizontal-card-list">
+          <mat-card *ngFor="let item of logoSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
+            <mat-card-content style=" background-color: transparent; margin:5px;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-logo"
+                   (dblclick)="chooseLogo(item)" style=" background-color: transparent;">
+            </mat-card-content>
+          </mat-card>
+        </mat-list>
+        <button mat-raised-button (click)="clearlogoResults()">Fermer</button>
+      </mat-expansion-panel>
+
+
+      <div class="row">
+        <div class="col">
+          <div class="image-preview-hero">
+            <mat-form-field class="example-full-width-image">
+              <mat-label>Hero</mat-label>
+              <input matInput placeholder="Heroe" [(ngModel)]="nonexecutable.Heroe" name="Heroe">
+              <div class="row">
+                <button mat-button (click)="searchHeroAssets('SGDB')">Steamgrid</button>
+                <button mat-button (click)="searchHeroAssets('Local')">Fichier Local</button>
+                <!--<button mat-button (click)="searchCoverAssets('Screenscraper')">Screenscraper</button>-->
+              </div>
+            </mat-form-field>
+            <div class="image-container">
+              <img *ngIf="nonexecutable.Heroe" [src]="nonexecutable.Heroe | imglink" alt="Heroe Preview">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <mat-expansion-panel [expanded]="isHeroExpanded" hideToggle style="background-color: transparent;padding:0px">
+        <mat-list class="horizontal-card-list">
+          <mat-card *ngFor="let item of heroSearchResults" class="mat-list-item" style=" background-color: transparent; margin: 5px;">
+            <mat-card-content style=" background-color: transparent; margin:5px;">
+              <img [src]="item | imglink" alt="Cover Preview" class="img-hero"
+                   (dblclick)="chooseHero(item)" style=" background-color: transparent;">
+            </mat-card-content>
+          </mat-card>
+        </mat-list>
+        <button mat-raised-button (click)="clearheroResults()">Fermer</button>
+      </mat-expansion-panel>
+
+      <!-- Add Save button here to submit changes -->
+
+      <div class="row">
+        <button mat-raised-button color="primary" (click)="saveChange()">Enregistrer les changements</button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

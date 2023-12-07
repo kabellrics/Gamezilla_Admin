@@ -38,6 +38,8 @@ import { TimestampToDatePipe } from './shared/timepipe';
 import { ConsoleassetsComponent } from './pages/consoleassets/consoleassets.component';
 import { AssetLogoPipe } from './shared/assetLogoPipe';
 import { AssetBckPipe } from './shared/assetBckPipe';
+import { ExecutablePipe } from './shared/executablePipe';
+import { NonexecutableDetailComponent } from './pages/nonexecutable-detail/nonexecutable-detail.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,8 @@ import { AssetBckPipe } from './shared/assetBckPipe';
     PlateformeListComponent,
     ExecutableListComponent,
     NonexecutableListComponent,
-    HomeComponent, ImgPipe, AssetLogoPipe, AssetBckPipe, PlateformeDetailComponent,
-    PlateformeListReorderComponent, PlateformePipe, StringToBoolPipe, ExecutableDetailComponent, TimestampToDatePipe, ConsoleassetsComponent
+    HomeComponent, ImgPipe, AssetLogoPipe, AssetBckPipe, ExecutablePipe, PlateformeDetailComponent,
+    PlateformeListReorderComponent, PlateformePipe, StringToBoolPipe, ExecutableDetailComponent, TimestampToDatePipe, ConsoleassetsComponent, NonexecutableDetailComponent
   ],
   imports: [
     HttpClientModule,
